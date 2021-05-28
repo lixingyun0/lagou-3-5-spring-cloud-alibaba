@@ -1,0 +1,29 @@
+server:
+  port: 8002
+
+spring:
+  application:
+    name: lagou-service-user
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 114.215.180.196:8000
+        namespace: lagou-task
+      config:
+        server-addr: 114.215.180.196:8000
+        namespace: lagou-task
+        file-extension: yml
+
+  datasource:
+    url: jdbc:mysql://47.98.59.188:3306/work?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&tinyInt1isBit=false&allowMultiQueries=true&serverTimezone=GMT%2B8
+    username: lagou
+    password: lagou
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always

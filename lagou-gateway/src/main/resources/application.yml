@@ -5,23 +5,26 @@ spring:
     name: lagou-gateway
   cloud:
     gateway:
-      routers:
+      routes:
         - id: lagou-serivce-user
-          uri: lb://lagou-serivce-user
+          uri: lb://lagou-service-user
           predicates:
             - Path=/user/**
+
         - id: lagou-service-code
-          uri: lb://lagou-serivce-code
+          uri: lb://lagou-service-code
           predicates:
             - Path=/code/**
 
 
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    service-url:
-      defaultZone: http://localhost:9001/eureka,http://localhost:9002/eureka
-    fetch-registry: true
-    register-with-eureka: true
+    nacos:
+      discovery:
+        server-addr: 114.215.180.196:8000
+        namespace: lagou-task
+
+logging:
+  level:
+    org.springframework.web.servlet.DispatcherServlet: debug
+    org.springframework.cloud.sleuth: debug
+
 
